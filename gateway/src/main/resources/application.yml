@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: baidu
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/usercenter/**
+          filters:
+            - PreserveHostHeader
+            - SetRequestHeader=Host, www.iere.com
+            - SetRequestHeader=x-log, 12323
